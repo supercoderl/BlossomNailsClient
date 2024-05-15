@@ -1,0 +1,157 @@
+@charset "UTF-8";
+
+@font-face {
+    font-family: flaticon;
+    src: url("../fonts/flaticon.ttf?bbc148dc4f0c8a5d0f7f745bfcf9eef7") format("truetype"), url("../fonts/flaticon.woff?bbc148dc4f0c8a5d0f7f745bfcf9eef7") format("woff"), url("../fonts/flaticon.woff2?bbc148dc4f0c8a5d0f7f745bfcf9eef7") format("woff2"), url("../fonts/flaticon.eot?bbc148dc4f0c8a5d0f7f745bfcf9eef7#iefix") format("embedded-opentype"), url("../fonts/flaticon.svg?bbc148dc4f0c8a5d0f7f745bfcf9eef7#flaticon") format("svg")
+}
+
+i[class*=" flaticon-"]:before,
+i[class^=flaticon-]:before {
+    font-family: flaticon !important;
+    font-style: normal;
+    font-weight: 400 !important;
+    font-variant: normal;
+    text-transform: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale
+}
+
+.flaticon-laser:before {
+    content: ""
+}
+
+.flaticon-spa:before {
+    content: ""
+}
+
+.flaticon-hand-cream:before {
+    content: ""
+}
+
+.flaticon-nail:before {
+    content: ""
+}
+
+.flaticon-eyebrow:before {
+    content: ""
+}
+
+.flaticon-hairdresser:before {
+    content: ""
+}
+
+.flaticon-lashes:before {
+    content: ""
+}
+
+.flaticon-cosmetics:before {
+    content: ""
+}
+
+.flaticon-draw-check-mark:before {
+    content: ""
+}
+
+.flaticon-shining:before {
+    content: ""
+}
+
+.flaticon-beauty:before {
+    content: ""
+}
+
+.flaticon-cbd-oil:before {
+    content: ""
+}
+
+.flaticon-spa-1:before {
+    content: ""
+}
+
+.flaticon-hair-removal:before {
+    content: ""
+}
+
+.flaticon-hot-stone:before {
+    content: ""
+}
+
+.flaticon-sauna:before {
+    content: ""
+}
+
+.flaticon-diet:before {
+    content: ""
+}
+
+.flaticon-stones:before {
+    content: ""
+}
+
+.flaticon-beauty-treatment:before {
+    content: ""
+}
+
+.flaticon-pedicure:before {
+    content: ""
+}
+
+.flaticon-massage:before {
+    content: ""
+}
+
+.flaticon-spa-2:before {
+    content: ""
+}
+
+.flaticon-quotation-mark:before {
+    content: ""
+}
+
+.flaticon-newspaper:before {
+    content: ""
+}
+
+.flaticon-hair-iron:before {
+    content: ""
+}
+
+.flaticon-hair:before {
+    content: ""
+}
+
+.flaticon-cut:before {
+    content: ""
+}
+
+.flaticon-massage-1:before {
+    content: ""
+}
+
+.flaticon-relax:before {
+    content: ""
+}
+
+.flaticon-beauty-treatment-1:before {
+    content: ""
+}
+
+.flaticon-liner:before {
+    content: ""
+}
+
+.flaticon-make-up:before {
+    content: ""
+}
+
+.flaticon-quotes:before {
+    content: ""
+}
+
+.flaticon-locations:before {
+    content: ""
+}
+
+.flaticon-email:before {
+    content: ""
+}
