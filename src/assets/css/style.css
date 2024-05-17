@@ -5157,6 +5157,7 @@ h6,
     .testimonial-area .testimonial-slider div {
         height: auto !important;
         display: block !important;
+        width: 100% !important;
     }
 }
 
