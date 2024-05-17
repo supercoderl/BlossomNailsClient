@@ -1,9 +1,9 @@
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebookF, faTwitter, faLinkedin, faInstagram } from "@fortawesome/free-brands-svg-icons";
-import { faPhone, faLocationDot, faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import { faPhone, faLocationDot, faEnvelope, faUserSecret } from "@fortawesome/free-solid-svg-icons";
 import { faPaperPlane } from "@fortawesome/free-regular-svg-icons";
-library.add(faFacebookF, faTwitter, faLinkedin, faInstagram, faPhone, faLocationDot, faEnvelope, faPaperPlane);
+library.add(faFacebookF, faTwitter, faLinkedin, faInstagram, faPhone, faLocationDot, faEnvelope, faPaperPlane, faUserSecret);
 
 const Footer = () => {
     return (
@@ -21,6 +21,7 @@ const Footer = () => {
                                 <p>
                                     At Blossom Nails, we pride ourselves on delivering exceptional nail care experiences tailored to each client's unique preferences.
                                 </p>
+
                                 <ul className="social-link">
                                     <li>
                                         <a href="https://www.facebook.com/" target="_blank">
@@ -40,6 +41,11 @@ const Footer = () => {
                                     <li>
                                         <a href="https://www.linkedin.com/" target="_blank">
                                             <FontAwesomeIcon icon="fa-brands fa-linkedin" />
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://blossom-nails-admin.vercel.app/admin/login" target="_blank">
+                                            <FontAwesomeIcon icon="fa-solid fa-user-secret" />
                                         </a>
                                     </li>
                                 </ul>
