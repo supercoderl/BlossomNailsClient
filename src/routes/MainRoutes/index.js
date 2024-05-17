@@ -19,7 +19,7 @@ const MainRoutes = () => {
     const [connection, setConnection] = useState();
 
     const joinRoom = async (user, room) => {
-        const connection = new HubConnectionBuilder().withUrl("https://localhost:7176/notify").configureLogging(LogLevel.Information).build();
+        const connection = new HubConnectionBuilder().withUrl("https://blossom-nails.somee.com/notify").configureLogging(LogLevel.Information).build();
         await connection.start();
         await connection.invoke("JoinRoom", { user, room });
         setConnection(connection);
