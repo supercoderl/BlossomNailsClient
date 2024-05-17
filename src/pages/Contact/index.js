@@ -7,7 +7,7 @@ import axiosInstance from "../../configs/axios";
 import { toast } from "react-toastify";
 library.add(faFacebookF, faTwitter, faLinkedinIn, faInstagram, faLocation, faEnvelope, faPhone, faSpinner);
 
-const Contact = () => {
+const Contact = ({ connection }) => {
     const [loading, setLoading] = useState(false);
     const [contact, setContact] = useState({
         fullname: "",
@@ -30,11 +30,12 @@ const Contact = () => {
     const sendMessage = async (e) => {
         e.preventDefault();
         setLoading(true);
-        await axiosInstance.post("Contact/create-contact", contact).then((response) => {
+        await axiosInstance.post("Contact/create-contact", contact).then(async (response) => {
             const result = response.data;
             if (!result) return;
             else if (result.success) {
                 toast.success(result.message);
+                await connection.invoke("SendNotify", `You have a new message from ${result.data?.fullname}`, "contact", result.data?.contactID);
                 clearContact();
             }
             else toast.error(result.message);

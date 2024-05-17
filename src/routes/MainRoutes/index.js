@@ -68,7 +68,7 @@ const MainRoutes = () => {
                 <Route path="/forgot-password" element={<ForgotPassword />} />
                 <Route path="/booking" element={<Booking connection={connection} />} />
                 <Route path="/pricing" element={<Pricing />} />
-                <Route path="/contact" element={<Contact />} />
+                <Route path="/contact" element={<Contact connection={connection} />} />
                 <Route path="/error/login-require" element={<LoginRequire />} />
                 <Route path="*" element={<NotFound />} />
             </Routes>
