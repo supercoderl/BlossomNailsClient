@@ -69,6 +69,7 @@ const Booking = ({ connection }) => {
         }
         else {
             getEmployees();
+            window.scrollTo(0, 0);
         }
     }
 
@@ -85,6 +86,7 @@ const Booking = ({ connection }) => {
         else {
             setStep("Information");
             setStepIcon("fa-circle-info");
+            window.scrollTo(0, 0);
         }
     }
 
@@ -105,6 +107,7 @@ const Booking = ({ connection }) => {
             setBooking(prevBooking => ({ ...prevBooking, totalCost: sumPrice(servicesSelected), endTime: getEndTime(booking?.startTime, servicesSelected) }));
             setStep("Check your booking");
             setStepIcon("fa-bookmark");
+            window.scrollTo(0, 0);
         }
     }
 
@@ -212,6 +215,7 @@ const Booking = ({ connection }) => {
                 setStepIcon("fa-circle-check");
                 toast.update(id, { render: "All is good. Congratulation!", type: "success", isLoading: false });
                 window.localStorage.removeItem("booking");
+                window.scrollTo(0, 0);
                 await addServiceToBooking();
                 await connection.invoke("SendNotify", `You have a new booking! BookingID ${booking?.bookingID}`, "booking", booking?.bookingID);
             }
