@@ -47,7 +47,7 @@ const MainRoutes = () => {
                     };
                     window.localStorage.setItem("booking", JSON.stringify(booking));
                 }
-            });
+            }).catch((error) => console.log(error));
     }
 
     useEffect(() => {
