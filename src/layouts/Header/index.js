@@ -93,14 +93,14 @@ const Header = () => {
                         </div>
 
                         <div className="book-btn hero-btn wow fadeInUp delay-0-4s">
-                            <a href={user ? '/booking' : '/error/login-require'} className="theme-btn">
+                            <a href='/booking' className="theme-btn">
                                 <FontAwesomeIcon icon="fa-regular fa-calendar" />
                                 Booking Now
                             </a>
                         </div>
 
                         <div className="mobile-book-btn hero-btn wow fadeInUp delay-0-4s">
-                            <a href={user ? '/booking' : '/error/login-require'}>
+                            <a href='/booking'>
                                 <FontAwesomeIcon icon="fa-regular fa-calendar" />
                             </a>
                         </div>

@@ -27,30 +27,27 @@ const MainRoutes = () => {
 
     const getGetOwnerBooking = async () => {
         const user = JSON.parse(AuthService.getUser());
-        if (user) {
-            await axiosInstance.get(`Booking/booking-by-customer`)
-                .then((response) => {
-                    const result = response.data;
-                    console.log(result);
-                    if (!result) return;
-                    else if (result.success && result.data) {
-                        const booking = {
-                            bookingID: result.data.bookingID,
-                            customerName: user?.fullname || "",
-                            customerPhone: user?.phone || "",
-                            customerID: user?.userID || "",
-                            nailTechnicianID: "",
-                            bookingDate: new Date(),
-                            startTime: "",
-                            endTime: "",
-                            status: "Booked",
-                            totalCost: 0,
-                            notes: ""
-                        };
-                        window.localStorage.setItem("booking", JSON.stringify(booking));
-                    }
-                });
-        }
+        await axiosInstance.get(`Booking/booking-empty`)
+            .then((response) => {
+                const result = response.data;
+                if (!result) return;
+                else if (result.success && result.data) {
+                    const booking = {
+                        bookingID: result.data.bookingID,
+                        customerName: user?.fullname || "",
+                        customerPhone: user?.phone || "",
+                        customerID: user?.userID || "",
+                        nailTechnicianID: "",
+                        bookingDate: new Date(),
+                        startTime: "",
+                        endTime: "",
+                        status: "Booked",
+                        totalCost: 0,
+                        notes: ""
+                    };
+                    window.localStorage.setItem("booking", JSON.stringify(booking));
+                }
+            });
     }
 
     useEffect(() => {
