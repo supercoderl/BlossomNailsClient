@@ -6255,6 +6255,10 @@ h6,
 }
 
 @media only screen and (max-width: 767px) {
+    .section-booking {
+        padding: 10px;
+    }
+
     .section-booking .steps:not(.mobile) {
         display: none;
     }
@@ -6305,6 +6309,29 @@ h6,
     .booking-calender .booking-confirmed .col-7,
     .booking-calender .booking-confirmed .col-7 .time-confirmed {
         display: block;
+    }
+
+    .sdp,
+    .booking-calender,
+    .section-booking .btn-change,
+    .booking-calender form input {
+        width: 100%;
+    }
+
+    .sdp--square-btn {
+        width: 2rem;
+        height: 2rem;
+    }
+
+    .section-booking .field {
+        display: flex !important;
+        flex-direction: column;
+        align-items: center;
+        justify-self: center;
+    }
+
+    .booking-calender .service-select .col-4 {
+        padding: 0;
     }
 }
 
