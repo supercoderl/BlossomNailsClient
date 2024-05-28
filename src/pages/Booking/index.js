@@ -12,7 +12,9 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShieldHalved, faCircleInfo, faCheck, faClock, faUser, faBookmark, faCircleCheck, faSpinner } from "@fortawesome/free-solid-svg-icons";
 import { sumPrice } from "../../utils/sum";
-import { combineDateTime, dateFormatter, getEndTime } from "../../utils/time";
+import { dateFormatter, getEndTime } from "../../utils/time";
+import Lottie from "lottie-react";
+import check from "../../assets/animation/check.json";
 library.add(faShieldHalved, faCircleInfo, faCheck, faClock, faUser, faBookmark, faCircleCheck, faSpinner);
 
 const Booking = ({ connection }) => {
@@ -31,6 +33,7 @@ const Booking = ({ connection }) => {
 
     // Object
     const [booking, setBooking] = useState(data);
+    const [bookingIDResult, setBookingIDResult] = useState(0);
     // Object
 
     useEffect(() => {
@@ -48,7 +51,7 @@ const Booking = ({ connection }) => {
     }
 
     const handleSelectDate = newDate => {
-        setBooking(prevBooking => ({ ...prevBooking, bookingDate: newDate }));
+        setBooking(prevBooking => ({ ...prevBooking, bookingDate: moment(newDate).format("YYYY-MM-DD") }));
     }
 
     const handleSelectTime = (hoursSelected, minuteSelected) => {
@@ -168,7 +171,7 @@ const Booking = ({ connection }) => {
             params:
             {
                 startTime: booking?.startTime,
-                bookingDate: dateFormatter(booking?.bookingDate, "DD-MM-YYYY")
+                bookingDate: dateFormatter(booking?.bookingDate, "YYYY-MM-DD")
             }
         })
             .then((response) => {
@@ -187,10 +190,10 @@ const Booking = ({ connection }) => {
             }).finally(() => setTimeout(() => setLoading(false), 300));
     }
 
-    const addServiceToBooking = async () => {
+    const addServiceToBooking = async (bookingID) => {
         setLoading(true);
         const requests = servicesSelected.map(e => ({
-            bookingID: booking?.bookingID,
+            bookingID,
             serviceID: e.id,
             serviceCost: e.price
         }));
@@ -210,14 +213,15 @@ const Booking = ({ connection }) => {
         await axiosInstance.put(`Booking/update-booking/${booking?.bookingID}`, booking).then(async (response) => {
             const result = response.data;
             if (!result) return;
-            else if (result.success) {
+            else if (result.success && result.data) {
+                setBookingIDResult(result.data?.bookingID);
                 setStep("Finish");
                 setStepIcon("fa-circle-check");
                 toast.update(id, { render: "All is good. Congratulation!", type: "success", isLoading: false });
                 window.localStorage.removeItem("booking");
                 window.scrollTo(0, 0);
-                await addServiceToBooking();
-                await connection.invoke("SendNotify", `You have a new booking! BookingID ${booking?.bookingID}`, "booking", booking?.bookingID);
+                await addServiceToBooking(result.data?.bookingID);
+                await connection.invoke("SendNotify", `You have a new booking! BookingID ${result.data?.bookingID}`, "booking", result.data?.bookingID);
             }
             else {
                 toast.update(id, { render: result.message, type: "error", isLoading: false });
@@ -321,21 +325,28 @@ const Booking = ({ connection }) => {
                         <p>Please enter your information below</p>
                         <div className="row m-0" style={{ gap: 20 }}>
                             <input
-                                className="col-4"
+                                className="col-3"
                                 type='text'
                                 placeholder='Full Name'
                                 value={booking?.customerName}
                                 onChange={(e) => setBooking(prevBooking => ({ ...prevBooking, customerName: e.target.value }))}
                             />
                             <input
-                                className="col-4"
+                                className="col-3"
                                 type='tel'
                                 placeholder='Number Phone'
                                 value={booking?.customerPhone}
                                 onChange={(e) => setBooking(prevBooking => ({ ...prevBooking, customerPhone: e.target.value }))}
                             />
                             <input
-                                className="col-4"
+                                className="col-3"
+                                type='text'
+                                placeholder='Email'
+                                value={booking?.email}
+                                onChange={(e) => setBooking(prevBooking => ({ ...prevBooking, customerEmail: e.target.value }))}
+                            />
+                            <input
+                                className="col-3"
                                 type='text'
                                 disabled
                                 defaultValue={`${moment(booking?.bookingDate).format("DD-MM-YYYY")} ${booking?.startTime}`}
@@ -491,8 +502,13 @@ const Booking = ({ connection }) => {
                         <div className="firework"></div>
 
                         <div className='col-5'>
-                            <i className='bx bxs-check-circle' ></i>
-                            <p>BOOKING ID: {booking?.bookingID}</p>
+                            <Lottie
+                                animationData={check}
+                                loop={true}
+                                style={{ width: "20%" }}
+                                className="m-auto"
+                            />;
+                            <p>BOOKING ID: {bookingIDResult}</p>
                             <h5>You Successfully created your booking</h5>
                             <span onClick={backToHome}><i className='bx bxs-home' ></i> Back to home</span>
                         </div>

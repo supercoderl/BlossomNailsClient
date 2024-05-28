@@ -2,7 +2,7 @@ import axios from 'axios';
 import AuthService from '../services/auth';
 
 const axiosInstance = axios.create({
-    baseURL: 'https://blossom-nails.somee.com/api/',
+    baseURL: `https://blossom-nails.somee.com/api/`,
 });
 
 axiosInstance.interceptors.request.use(
